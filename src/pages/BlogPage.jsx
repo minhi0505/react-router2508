@@ -3,7 +3,8 @@ import styles from './BlogPage.module.scss';
 import {posts} from '../dummy-data/dummy-post.js';
 import PostCard from '../components/PostCard.jsx';
 import {useSearchParams} from 'react-router-dom';
-import BlogFilter from "../components/BlogFilter.jsx";
+import BlogFilter from '../components/BlogFilter.jsx';
+import BlogSideBar from '../components/BlogSideBar.jsx';
 
 const BlogPage = () => {
 
@@ -31,6 +32,7 @@ const BlogPage = () => {
 
                 <BlogFilter />
 
+                <BlogSideBar />
                 <div className={styles.grid}>
                     {posts
                         // 제목 또는 내용으로 검색
@@ -40,13 +42,13 @@ const BlogPage = () => {
                         )
                         // 카테고리로 검색
                         .filter(post =>
-                           category === 'all' || post.category === category
+                            category === 'all' || post.category === category
                         )
                         // 정렬 (최신순, 오래된순)
                         .sort((a, b) =>
                             sort === 'latest'
-                                ? new Date(b.date) - new Date(a.date) // 내림차
-                                : new Date(a.date) - new Date(b.date) // 오름차
+                                ? new Date(b.date) - new Date(a.date)
+                                : new Date(a.date) - new Date(b.date)
                         )
                         .map(post => <PostCard key={post.id} post={post}/>)}
                 </div>
