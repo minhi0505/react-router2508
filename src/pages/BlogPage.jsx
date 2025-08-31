@@ -3,6 +3,7 @@ import styles from './BlogPage.module.scss';
 import {posts} from '../dummy-data/dummy-post.js';
 import PostCard from '../components/PostCard.jsx';
 import {useSearchParams} from 'react-router-dom';
+import BlogFilter from "../components/BlogFilter.jsx";
 
 const BlogPage = () => {
 
@@ -27,6 +28,9 @@ const BlogPage = () => {
     return (
         <>
             <div className={styles.blog}>
+
+                <BlogFilter />
+
                 <div className={styles.grid}>
                     {posts
                         // 제목 또는 내용으로 검색
